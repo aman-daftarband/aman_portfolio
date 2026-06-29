@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Terminal, ArrowRight, CornerDownLeft } from 'lucide-react';
+import { Terminal, CornerDownLeft } from 'lucide-react';
 import GlowingCard from './UI/GlowingCard';
 
 interface LogLine {
