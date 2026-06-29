@@ -9,6 +9,7 @@ import Projects from './components/Projects';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import DeveloperTerminal from './components/DeveloperTerminal';
 import { BackgroundGrid } from './components/UI/BackgroundGrid';
 import { AIChatbot } from './components/AIChatbot';
 import { CommandPalette } from './components/CommandPalette';
@@ -74,6 +75,7 @@ export const App: React.FC = () => {
           <Experience />
           <Projects />
           <Certifications />
+          <DeveloperTerminal />
           <Contact />
         </div>
 

@@ -4,11 +4,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface CommandItem {
   id: string;
   name: string;
+  keywords?: string[];
   shortcut?: string;
-  category: 'Navigation' | 'Actions' | 'Contact';
+  category: 'Navigation' | 'Actions' | 'Contact' | 'Themes';
   icon: React.ReactNode;
   action: () => void;
 }
+
+const THEMES = ['space', 'cyberpunk', 'emerald', 'sunset'];
+
+const applyTheme = (themeId: string) => {
+  if (themeId === 'space') {
+    document.documentElement.removeAttribute('data-theme');
+  } else {
+    document.documentElement.setAttribute('data-theme', themeId);
+  }
+  localStorage.setItem('portfolio-theme', themeId);
+  window.dispatchEvent(new CustomEvent('theme-changed', { detail: themeId }));
+};
 
 export const CommandPalette: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +29,12 @@ export const CommandPalette: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Load saved theme on mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'space';
+    applyTheme(savedTheme);
+  }, []);
 
   // Toggle command palette
   useEffect(() => {
@@ -33,7 +52,7 @@ export const CommandPalette: React.FC = () => {
     return () => window.removeEventListener('toggle-command-palette', handleToggle);
   }, []);
 
-  // Listen to keyboard shortcut (Ctrl+K or Cmd+K)
+  // Listen to keyboard shortcut (Ctrl+K or Cmd+K to open, Alt+T to cycle theme)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
@@ -46,6 +65,14 @@ export const CommandPalette: React.FC = () => {
           }
           return next;
         });
+      }
+
+      if (e.altKey && e.key.toLowerCase() === 't') {
+        e.preventDefault();
+        const currentTheme = localStorage.getItem('portfolio-theme') || 'space';
+        const currentIndex = THEMES.indexOf(currentTheme);
+        const nextIndex = (currentIndex + 1) % THEMES.length;
+        applyTheme(THEMES[nextIndex]);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -73,6 +100,7 @@ export const CommandPalette: React.FC = () => {
     {
       id: 'nav-home',
       name: 'Go to Home',
+      keywords: ['/home', '/index', 'go to home', 'start', 'hero'],
       category: 'Navigation',
       icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>,
       action: () => {
@@ -83,6 +111,7 @@ export const CommandPalette: React.FC = () => {
     {
       id: 'nav-about',
       name: 'Go to About Me',
+      keywords: ['/about', 'about me', 'education', 'background', 'cv'],
       category: 'Navigation',
       icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>,
       action: () => {
@@ -93,6 +122,7 @@ export const CommandPalette: React.FC = () => {
     {
       id: 'nav-skills',
       name: 'Go to Skills',
+      keywords: ['/skills', 'tech stack', 'expert', 'skills', 'technologies'],
       category: 'Navigation',
       icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="9" /><rect x="14" y="3" width="7" height="5" /><rect x="14" y="12" width="7" height="9" /><rect x="3" y="16" width="7" height="5" /></svg>,
       action: () => {
@@ -103,6 +133,7 @@ export const CommandPalette: React.FC = () => {
     {
       id: 'nav-experience',
       name: 'Go to Experience',
+      keywords: ['/experience', 'work', 'internship', 'experience', 'jobs'],
       category: 'Navigation',
       icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>,
       action: () => {
@@ -113,6 +144,7 @@ export const CommandPalette: React.FC = () => {
     {
       id: 'nav-projects',
       name: 'Go to Projects',
+      keywords: ['/projects', 'projects', 'portfolio', 'work', 'github'],
       category: 'Navigation',
       icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg>,
       action: () => {
@@ -121,8 +153,20 @@ export const CommandPalette: React.FC = () => {
       }
     },
     {
+      id: 'nav-sandbox',
+      name: 'Go to Developer Sandbox',
+      keywords: ['/sandbox', '/terminal', 'developer playground', 'interactive terminal', 'cli'],
+      category: 'Navigation',
+      icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2" /><line x1="2" y1="10" x2="22" y2="10" /><path d="M7 14l2 1-2 1" /><line x1="11" y1="16" x2="13" y2="16" /></svg>,
+      action: () => {
+        const el = document.getElementById('sandbox');
+        el?.scrollIntoView({ behavior: 'smooth' });
+      }
+    },
+    {
       id: 'nav-certifications',
       name: 'Go to Certifications',
+      keywords: ['/certifications', 'awards', 'credentials', 'certifications', 'badges'],
       category: 'Navigation',
       icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7" /><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" /></svg>,
       action: () => {
@@ -133,6 +177,7 @@ export const CommandPalette: React.FC = () => {
     {
       id: 'nav-contact',
       name: 'Go to Contact Form',
+      keywords: ['/contact', 'contact', 'email', 'hire', 'send message'],
       category: 'Navigation',
       icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>,
       action: () => {
@@ -145,6 +190,7 @@ export const CommandPalette: React.FC = () => {
       id: 'act-resume',
       name: 'Download Resume (PDF)',
       shortcut: '⌘D',
+      keywords: ['/resume', 'download resume', 'pdf cv'],
       category: 'Actions',
       icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="12" y1="18" x2="12" y2="12" /><polyline points="9 15 12 12 15 15" /></svg>,
       action: () => {
@@ -160,6 +206,7 @@ export const CommandPalette: React.FC = () => {
       id: 'act-chatbot',
       name: 'Open Chatbot Assistant',
       shortcut: '⌘C',
+      keywords: ['/chat', '/chatbot', 'ai chatbot', 'ask aman', 'help'],
       category: 'Actions',
       icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>,
       action: () => {
@@ -173,16 +220,65 @@ export const CommandPalette: React.FC = () => {
       id: 'act-grid',
       name: 'Toggle Ambient Grid',
       shortcut: '⌘G',
+      keywords: ['/grid', 'toggle background grid', 'hide grid', 'show grid'],
       category: 'Actions',
       icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><line x1="9" y1="3" x2="9" y2="21" /><line x1="15" y1="3" x2="15" y2="21" /><line x1="3" y1="9" x2="21" y2="9" /><line x1="3" y1="15" x2="21" y2="15" /></svg>,
       action: () => {
         window.dispatchEvent(new CustomEvent('toggle-bg-grid'));
       }
     },
+    // Themes
+    {
+      id: 'theme-cycle',
+      name: 'Cycle Color Theme',
+      shortcut: 'Alt+T',
+      keywords: ['/theme', 'change colors', 'cycle theme', 'toggle themes'],
+      category: 'Themes',
+      icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>,
+      action: () => {
+        const currentTheme = localStorage.getItem('portfolio-theme') || 'space';
+        const currentIndex = THEMES.indexOf(currentTheme);
+        const nextIndex = (currentIndex + 1) % THEMES.length;
+        applyTheme(THEMES[nextIndex]);
+      }
+    },
+    {
+      id: 'theme-space',
+      name: 'Theme: Space Blue (Classic)',
+      keywords: ['/theme space', 'blue theme', 'default theme', 'classic theme'],
+      category: 'Themes',
+      icon: <span className="w-3 h-3 rounded-full bg-blue-500 border border-white/20 inline-block" />,
+      action: () => applyTheme('space')
+    },
+    {
+      id: 'theme-cyberpunk',
+      name: 'Theme: Cyberpunk Neon',
+      keywords: ['/theme cyberpunk', 'pink theme', 'neon theme', 'cyberpunk theme'],
+      category: 'Themes',
+      icon: <span className="w-3 h-3 rounded-full bg-[#ff007f] border border-white/20 inline-block" />,
+      action: () => applyTheme('cyberpunk')
+    },
+    {
+      id: 'theme-emerald',
+      name: 'Theme: Emerald Matrix',
+      keywords: ['/theme emerald', 'green theme', 'matrix theme', 'emerald theme'],
+      category: 'Themes',
+      icon: <span className="w-3 h-3 rounded-full bg-[#10b981] border border-white/20 inline-block" />,
+      action: () => applyTheme('emerald')
+    },
+    {
+      id: 'theme-sunset',
+      name: 'Theme: Sunset Glow',
+      keywords: ['/theme sunset', 'orange theme', 'sunset theme', 'warm theme'],
+      category: 'Themes',
+      icon: <span className="w-3 h-3 rounded-full bg-[#f97316] border border-white/20 inline-block" />,
+      action: () => applyTheme('sunset')
+    },
     // Contact Info
     {
       id: 'con-email',
       name: 'Copy Email Address (amandaftarband@gmail.com)',
+      keywords: ['copy email', 'email address', 'contact mail'],
       category: 'Contact',
       icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>,
       action: () => {
@@ -193,6 +289,7 @@ export const CommandPalette: React.FC = () => {
     {
       id: 'con-phone',
       name: 'Copy Phone Number (+91 8788177013)',
+      keywords: ['copy phone', 'phone number', 'contact mobile'],
       category: 'Contact',
       icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>,
       action: () => {
@@ -204,7 +301,8 @@ export const CommandPalette: React.FC = () => {
 
   const filtered = commands.filter(cmd =>
     cmd.name.toLowerCase().includes(query.toLowerCase()) ||
-    cmd.category.toLowerCase().includes(query.toLowerCase())
+    cmd.category.toLowerCase().includes(query.toLowerCase()) ||
+    (cmd.keywords && cmd.keywords.some(k => k.toLowerCase().includes(query.toLowerCase())))
   );
 
   // Handle key listeners in modal
@@ -279,7 +377,7 @@ export const CommandPalette: React.FC = () => {
             <div className="flex-grow overflow-y-auto p-2 space-y-2 no-scrollbar">
               {filtered.length > 0 ? (
                 // Grouping commands by category
-                ['Navigation', 'Actions', 'Contact'].map((cat) => {
+                ['Navigation', 'Actions', 'Themes', 'Contact'].map((cat) => {
                   const itemsInCat = filtered.filter(c => c.category === cat);
                   if (itemsInCat.length === 0) return null;
 

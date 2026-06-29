@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Menu, X, Palette, ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
+  { name: 'Sandbox', href: '#sandbox' },
   { name: 'Resume', href: '/Aman_Daftarband_Resume.pdf', external: true },
   { name: 'Contact', href: '#contact' },
 ];
@@ -14,6 +16,59 @@ export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [currentTheme, setCurrentTheme] = useState('space');
+  const [isThemeDropdownOpen, setIsThemeDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const themes = [
+    { id: 'space', name: 'Space Blue', color: '#3B82F6' },
+    { id: 'cyberpunk', name: 'Cyberpunk', color: '#ff007f' },
+    { id: 'emerald', name: 'Emerald', color: '#10b981' },
+    { id: 'sunset', name: 'Sunset', color: '#f97316' }
+  ];
+
+  useEffect(() => {
+    // Load saved theme on mount
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'space';
+    setCurrentTheme(savedTheme);
+
+    const handleThemeChange = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      setCurrentTheme(customEvent.detail || 'space');
+    };
+
+    window.addEventListener('theme-changed', handleThemeChange);
+    return () => {
+      window.removeEventListener('theme-changed', handleThemeChange);
+    };
+  }, []);
+
+  // Close dropdown on click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsThemeDropdownOpen(false);
+      }
+    };
+    if (isThemeDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isThemeDropdownOpen]);
+
+  const handleThemeSelect = (themeId: string) => {
+    if (themeId === 'space') {
+      document.documentElement.removeAttribute('data-theme');
+    } else {
+      document.documentElement.setAttribute('data-theme', themeId);
+    }
+    localStorage.setItem('portfolio-theme', themeId);
+    setCurrentTheme(themeId);
+    window.dispatchEvent(new CustomEvent('theme-changed', { detail: themeId }));
+    setIsThemeDropdownOpen(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -80,6 +135,57 @@ export const Navbar: React.FC = () => {
               <span>Search...</span>
               <kbd className="text-[9px] bg-white/10 border border-white/10 px-1.5 py-0.5 rounded font-mono font-bold tracking-widest text-gray-400">Ctrl K</kbd>
             </button>
+
+            {/* Visual Theme Switcher */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setIsThemeDropdownOpen(!isThemeDropdownOpen)}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/5 text-gray-400 hover:text-white hover:bg-white/10 hover:border-white/10 text-xs transition-all cursor-pointer font-medium"
+                aria-label="Select Theme"
+              >
+                <Palette className="w-3.5 h-3.5" style={{ color: themes.find(t => t.id === currentTheme)?.color }} />
+                <span className="capitalize">{currentTheme === 'space' ? 'Classic' : currentTheme}</span>
+                <ChevronDown className={`w-3 h-3 transition-transform duration-200 ${isThemeDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              <AnimatePresence>
+                {isThemeDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute right-0 mt-2 w-44 rounded-2xl border border-white/10 bg-[#0e1322]/95 backdrop-blur-xl p-2 shadow-2xl z-50 space-y-1"
+                  >
+                    <div className="px-2 py-1 text-[9px] font-bold text-gray-500 uppercase tracking-widest border-b border-white/5 mb-1">
+                      Choose Theme
+                    </div>
+                    {themes.map((t) => (
+                      <button
+                        key={t.id}
+                        onClick={() => handleThemeSelect(t.id)}
+                        className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-xl text-xs transition-all text-left ${
+                          currentTheme === t.id
+                            ? 'bg-white/10 text-white font-semibold'
+                            : 'text-gray-400 hover:text-white hover:bg-white/5'
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <span
+                            className="w-2 h-2 rounded-full border border-white/20 inline-block shadow-sm"
+                            style={{ backgroundColor: t.color }}
+                          />
+                          <span>{t.name}</span>
+                        </div>
+                        {currentTheme === t.id && (
+                          <span className="h-1 w-1 rounded-full bg-cyan-400" />
+                        )}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
             <div className="flex items-center space-x-1">
               {navItems.map((item) => (
@@ -152,6 +258,30 @@ export const Navbar: React.FC = () => {
               {item.name}
             </a>
           ))}
+
+          {/* Theme Selector for Mobile */}
+          <div className="pt-3 pb-2 px-4 border-t border-white/5 mt-3">
+            <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest block mb-2.5">Select Theme</span>
+            <div className="grid grid-cols-4 gap-2">
+              {themes.map((t) => (
+                <button
+                  key={t.id}
+                  onClick={() => handleThemeSelect(t.id)}
+                  className={`flex flex-col items-center justify-center p-2 rounded-xl border text-[10px] font-medium transition-all ${
+                    currentTheme === t.id
+                      ? 'bg-white/10 border-white/10 text-white font-semibold'
+                      : 'bg-white/5 border-white/5 text-gray-400 hover:text-white'
+                  }`}
+                >
+                  <span
+                    className="w-3.5 h-3.5 rounded-full border border-white/20 mb-1"
+                    style={{ backgroundColor: t.color }}
+                  />
+                  <span className="capitalize">{t.id === 'space' ? 'Classic' : t.id}</span>
+                </button>
+              ))}
+            </div>
+          </div>
           
           <div className="pt-4 border-t border-white/5 flex items-center justify-around">
             <a

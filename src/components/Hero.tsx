@@ -20,10 +20,10 @@ export const Hero: React.FC = () => {
             className="relative flex-shrink-0"
           >
             {/* Holographic glowing orb background */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/20 via-purple-500/20 to-cyan-500/20 blur-[40px] animate-pulse-glow will-change-[transform,opacity] pointer-events-none" />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-brand-blue/20 via-brand-purple/20 to-brand-cyan/20 blur-[40px] animate-pulse-glow will-change-[transform,opacity] pointer-events-none transition-all duration-500" />
             
             {/* The circular photo container */}
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full p-[3px] bg-gradient-to-r from-blue-500 to-cyan-400 shadow-[0_0_50px_rgba(59,130,246,0.35)] overflow-hidden flex items-center justify-center bg-[#0B0F19]">
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full p-[3px] bg-gradient-to-r from-brand-blue to-brand-cyan shadow-[0_0_50px_var(--glow-color,rgba(59,130,246,0.35))] overflow-hidden flex items-center justify-center bg-brand-bg transition-all duration-500">
               <img
                 src="/aman_photo.jpg"
                 alt="Aman Daftarband"
@@ -59,14 +59,14 @@ export const Hero: React.FC = () => {
               <a
                 href="/Aman_Daftarband_Resume.pdf"
                 download
-                className="flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/35 transition-all duration-300"
+                className="flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-brand-blue to-brand-cyan hover:from-brand-blue/90 hover:to-brand-cyan/90 shadow-lg shadow-brand-blue/20 hover:shadow-brand-blue/35 transition-all duration-300"
               >
                 <Download className="w-4.5 h-4.5" />
                 <span>View Resume</span>
               </a>
               <a
                 href="#contact"
-                className="flex items-center justify-center px-6 py-3 rounded-full font-semibold text-cyan-400 bg-transparent border border-cyan-500/30 hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-300"
+                className="flex items-center justify-center px-6 py-3 rounded-full font-semibold text-brand-cyan bg-transparent border border-brand-cyan/30 hover:border-brand-cyan hover:bg-brand-cyan/10 transition-all duration-300"
               >
                 <span>Get In Touch</span>
               </a>
@@ -111,10 +111,10 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Ambient glow backgrounds */}
-      <div className="absolute top-[20%] left-[10%] -z-10 w-96 h-96 rounded-full bg-blue-500/10 blur-[120px] pointer-events-none" />
+      <div className="absolute top-[20%] left-[10%] -z-10 w-96 h-96 rounded-full bg-brand-blue/10 blur-[120px] pointer-events-none transition-colors duration-500" />
       
       {/* Fade overlay at bottom */}
-      <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#0B0F19] to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-brand-bg to-transparent pointer-events-none transition-colors duration-500" />
     </section>
   );
 };

@@ -9,7 +9,7 @@ interface GlowingCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export const GlowingCard: React.FC<GlowingCardProps> = ({
   children,
   className = '',
-  glowColor = 'rgba(59, 130, 246, 0.12)',
+  glowColor = 'var(--glow-color, rgba(59, 130, 246, 0.12))',
   ...props
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);

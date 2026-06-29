@@ -15,7 +15,7 @@ export const BackgroundGrid: React.FC = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 -z-50 overflow-hidden bg-[#0B0F19] w-full h-full pointer-events-none">
+    <div className="fixed inset-0 -z-50 overflow-hidden bg-brand-bg w-full h-full pointer-events-none transition-colors duration-500">
       {/* Ambient Radial Glows */}
       <div className="absolute top-0 left-0 w-full h-full">
         {/* Top-Left Blue Glow */}
@@ -29,7 +29,7 @@ export const BackgroundGrid: React.FC = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute -top-40 -left-40 w-96 h-96 md:w-[600px] md:h-[600px] rounded-full bg-blue-500/10 blur-[80px] md:blur-[120px] will-change-transform"
+          className="absolute -top-40 -left-40 w-96 h-96 md:w-[600px] md:h-[600px] rounded-full bg-brand-blue/10 blur-[80px] md:blur-[120px] will-change-transform transition-colors duration-500"
         />
 
         {/* Center-Right Purple Glow */}
@@ -43,7 +43,7 @@ export const BackgroundGrid: React.FC = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute top-[25%] -right-20 w-80 h-80 md:w-[500px] md:h-[500px] rounded-full bg-purple-500/10 blur-[80px] md:blur-[120px] will-change-transform"
+          className="absolute top-[25%] -right-20 w-80 h-80 md:w-[500px] md:h-[500px] rounded-full bg-brand-purple/10 blur-[80px] md:blur-[120px] will-change-transform transition-colors duration-500"
         />
 
         {/* Bottom-Left Cyan Glow */}
@@ -57,7 +57,7 @@ export const BackgroundGrid: React.FC = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute bottom-[-10%] left-[10%] w-96 h-96 md:w-[550px] md:h-[550px] rounded-full bg-cyan-500/8 blur-[80px] md:blur-[120px] will-change-transform"
+          className="absolute bottom-[-10%] left-[10%] w-96 h-96 md:w-[550px] md:h-[550px] rounded-full bg-brand-cyan/8 blur-[80px] md:blur-[120px] will-change-transform transition-colors duration-500"
         />
       </div>
 
@@ -66,9 +66,9 @@ export const BackgroundGrid: React.FC = () => {
 
       {/* Mask to smooth out the edges of the grid (Stripe/Linear style) */}
       <div 
-        className="absolute inset-0 pointer-events-none" 
+        className="absolute inset-0 pointer-events-none transition-all duration-500" 
         style={{
-          background: 'radial-gradient(circle at 50% 50%, transparent 20%, #0B0F19 85%)'
+          background: 'radial-gradient(circle at 50% 50%, transparent 20%, var(--color-brand-bg) 85%)'
         }}
       />
     </div>
