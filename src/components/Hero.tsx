@@ -11,7 +11,7 @@ export const Hero: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full">
         {/* Layout Grid: Centered & Aligned */}
         <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
-          
+
           {/* Left Side: Circular Portrait Photo with Glowing Blue Border */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -21,7 +21,7 @@ export const Hero: React.FC = () => {
           >
             {/* Holographic glowing orb background */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-brand-blue/20 via-brand-purple/20 to-brand-cyan/20 blur-[40px] animate-pulse-glow will-change-[transform,opacity] pointer-events-none transition-all duration-500" />
-            
+
             {/* The circular photo container */}
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full p-[3px] bg-gradient-to-r from-brand-blue to-brand-cyan shadow-[0_0_50px_var(--glow-color,rgba(59,130,246,0.35))] overflow-hidden flex items-center justify-center bg-brand-bg transition-all duration-500">
               <img
@@ -46,12 +46,12 @@ export const Hero: React.FC = () => {
 
             {/* Subtitle */}
             <h2 className="text-2xl sm:text-3xl font-semibold text-white tracking-wide">
-              Computer Application Student
+              AI & Python Developer
             </h2>
 
             {/* Description */}
             <p className="text-base sm:text-lg text-gray-400 leading-relaxed font-light">
-              Passionate about <span className="text-gray-200">Data Analytics</span>, <span className="text-gray-200">Generative AI</span>, and <span className="text-gray-200">Software Engineering</span>
+              Specialized in building full-stack AI applications, automation workflows.
             </p>
 
             {/* Rounded Buttons */}
@@ -112,7 +112,7 @@ export const Hero: React.FC = () => {
 
       {/* Ambient glow backgrounds */}
       <div className="absolute top-[20%] left-[10%] -z-10 w-96 h-96 rounded-full bg-brand-blue/10 blur-[120px] pointer-events-none transition-colors duration-500" />
-      
+
       {/* Fade overlay at bottom */}
       <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-brand-bg to-transparent pointer-events-none transition-colors duration-500" />
     </section>

@@ -59,7 +59,7 @@ export const Certifications: React.FC = () => {
   return (
     <section id="certifications" className="py-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        
+
         {/* Section Header */}
         <div className="text-center mb-16">
           <motion.h2
@@ -100,7 +100,7 @@ export const Certifications: React.FC = () => {
                     <div className={`p-3 rounded-xl bg-gradient-to-tr ${cert.borderColor} text-white shadow-lg`}>
                       <Award className="w-6 h-6" />
                     </div>
-                    
+
                     <span className="flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
                       <ShieldCheck className="w-3.5 h-3.5" />
                       <span>Verified</span>
@@ -110,11 +110,11 @@ export const Certifications: React.FC = () => {
                   <h3 className="text-xl font-bold text-white mt-5 leading-snug">
                     {cert.title}
                   </h3>
-                  
+
                   <p className="text-sm font-semibold text-gray-400 mt-2">
                     {cert.issuer}
                   </p>
-                  
+
                   {cert.credentialId && (
                     <p className="text-xs font-mono text-gray-500 mt-4 bg-white/5 border border-white/5 px-2.5 py-1 rounded-lg inline-block">
                       ID: {cert.credentialId}
@@ -127,7 +127,7 @@ export const Certifications: React.FC = () => {
                   <span className="text-xs font-semibold text-gray-500 uppercase tracking-widest">
                     Issued: {cert.year}
                   </span>
-                  
+
                   <a
                     href={cert.verificationUrl}
                     target="_blank"

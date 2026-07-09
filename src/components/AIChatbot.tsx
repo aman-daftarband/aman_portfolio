@@ -43,11 +43,11 @@ export const AIChatbot: React.FC = () => {
     if (msg.includes('jarvis') || msg.includes('j.a.r.v.i.s')) {
       return "J.A.R.V.I.S is a local AI voice assistant built by Aman. It uses Python FastAPI, Groq (Llama 3 70B), Tavily Search API, and a FAISS vector database for contextual memory. Click on it in the Projects section to see details!";
     }
-    if (msg.includes('resume ai')) {
-      return "Resume AI is an ATS keyword optimizer and builder built with Flask, React, and MySQL. It calculates cosine similarity scores and uses Groq Llama 3 to suggest resume enhancements.";
+    if (msg.includes('property') || msg.includes('verification') || msg.includes('document') || msg.includes('fraud')) {
+      return "The AI Property Document Verification System is a full-stack fraud detection system built using React, Flask, SQLAlchemy, Tesseract OCR, and Groq LLaMA 3 70B.";
     }
     if (msg.includes('project')) {
-      return "Aman has built two core AI projects: 1. J.A.R.V.I.S (a desktop voice assistant with vector search memory) and 2. Resume AI (an ATS resume optimizer scanner). Feel free to click on them to explore!";
+      return "Aman has built two core AI projects: 1. J.A.R.V.I.S (a desktop voice assistant with vector search memory) and 2. AI Property Document Verification System (automating property fraud detection). Feel free to click on them to explore!";
     }
     if (msg.includes('skill') || msg.includes('tech') || msg.includes('expert') || msg.includes('language')) {
       return "Aman's skills include Python, FastAPI, Flask, SQL, React, TypeScript, and Data Analytics, along with deep expertise in Prompt Engineering and building RAG workflows.";
@@ -55,8 +55,8 @@ export const AIChatbot: React.FC = () => {
     if (msg.includes('contact') || msg.includes('hire') || msg.includes('email') || msg.includes('phone') || msg.includes('reach')) {
       return "You can reach Aman via email at amandaftarband@gmail.com, call him at +91 8788177013, or message him using the form in the Contact section.";
     }
-    if (msg.includes('education') || msg.includes('college') || msg.includes('degree') || msg.includes('cgpa')) {
-      return "Aman holds a Bachelor of Computer Applications (BCA) degree from Basaveshwar Science College, Bagalkot (2023 - 2026), with a CGPA of 8.15 / 10.";
+    if (msg.includes('education') || msg.includes('college') || msg.includes('degree') || msg.includes('school') || msg.includes('percentage') || msg.includes('cgpa')) {
+      return "Aman is pursuing a BCA degree from Basaveshwar Science College, Bagalkot (2023 - 2026) with 8.15 CGPA. He completed Class XII in 2023 (60%) and Class X in 2021 (63%).";
     }
     if (msg.includes('experience') || msg.includes('work') || msg.includes('intern') || msg.includes('arlig')) {
       return "Aman interned as a Python & AI Intern at Arlig Technologies, where he designed modular FastAPI systems and integrated LLM workflows to improve developer automation productivity by 30%.";
@@ -84,12 +84,12 @@ Aman's Details:
 - Phone: +91 8788177013
 - LinkedIn: https://www.linkedin.com/in/aman-daftarband
 - GitHub: https://github.com/amanshaikh405
-- Education: Bachelor of Computer Applications (BCA) at Basaveshwar Science College (2023-2026), CGPA: 8.15 / 10
+- Education: Bachelor of Computer Applications (BCA) at Basaveshwar Science College (2023-2026, CGPA: 8.15 / 10), Class XII (Shivshambho Arts and Science College, 2023, 60%), Class X (Sadashivrao Mane Vidyalaya, 2021, 63%).
 - Experience: Python & AI Developer Intern at Arlig Technologies. Designed FastAPI systems, integrated AI models, improved efficiency by 30%.
-- Certifications: Oracle Cloud Infrastructure 2025 AI Foundations Associate, NVIDIA Deep Learning Institute (Building LLM Applications).
+- Certifications: Oracle Cloud Infrastructure 2025 AI Foundations Associate, NVIDIA Deep Learning Institute (Building LLM Applications with Prompt Engineering).
 - Projects:
   1. J.A.R.V.I.S Smart Desktop Voice Assistant: Python, FastAPI, Groq AI, FAISS vector memory retrieval, Tavily API.
-  2. Resume AI: React, Flask, MySQL, Groq Llama 3 API ATS scanners, PDF compilation export.
+  2. AI Property Document Verification System: React, Flask, SQLAlchemy, Tesseract OCR, Groq LLaMA 3 70B, stateless JWT role access controls.
 
 Rules:
 - Be polite, helpful, and concise.

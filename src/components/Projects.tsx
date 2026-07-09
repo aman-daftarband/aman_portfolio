@@ -77,25 +77,26 @@ export const Projects: React.FC = () => {
     },
     {
       id: 2,
-      name: 'Resume AI',
-      description: 'AI-powered Resume Builder and Career Management Platform featuring ATS keyword scanning, resume scores, and customizable PDF templates.',
-      longDescription: 'Resume AI is a comprehensive full-stack platform designed to automate and optimize the job application workflow. The platform features an ATS (Applicant Tracking System) scanner that compares a candidate\'s resume against specific job descriptions using TF-IDF tokenization and Cosine Similarity. The backend is built using Flask API and MySQL, which handles secure JWT session management and candidate profiles. Using Llama 3 (via Groq API), the platform parses resumes, calculates a match score, highlights missing critical keywords, and generates instant, context-aware rewrite suggestions to bypass recruiters\' automated scanners. Completed resumes can be custom-compiled and exported as print-ready PDF files.',
-      architecture: 'User uploads resume data and targets a job description -> The Flask backend processes the resume text -> The ATS parser extracts key tokens and performs TF-IDF matching -> Groq Llama 3 analyzes the resume alignment and lists missing keywords or improvements -> The match score is saved in MySQL -> Results are rendered on the React dashboard -> The user can export a formatted PDF using custom templates.',
+      name: 'AI Property Document Verification System',
+      description: 'A full-stack property document verification platform automating fraud detection across 7+ document types using OCR and Groq LLaMA 3 70B.',
+      longDescription: 'The AI Property Document Verification System is a secure, full-stack enterprise-grade application built to identify and flag fraudulent property document submissions. The backend is powered by Flask and SQLAlchemy, handling relational schemas and user verification reports. Document content is extracted using Tesseract OCR, preprocessed for noise reduction, and analyzed via the Groq API (using LLaMA 3 70B) for discrepancies, format compliance, and common forgery indicators. The platform calculates a dual confidence and fraud-risk score and restricts user roles (User, Officer, Admin) using stateless JWT authentication. Finally, the system compiles comprehensive reports and exports them as verified PDF summaries.',
+      architecture: 'User uploads a property document -> The Flask backend processes the upload -> Tesseract OCR extracts text from the document image or PDF -> Text is structured and sent to Groq LLaMA 3 70B -> The AI analyzes the data against known formats and identifies fraud risks -> A dual confidence + fraud score is generated and stored in the database -> The React frontend displays the risk score dashboard -> Verified PDF reports are compiled and exported.',
       metrics: [
-        { label: 'Core AI Model', value: 'Llama 3 8B (Groq)' },
-        { label: 'Scan Time', value: '< 1.5 seconds' },
-        { label: 'ATS Match Metric', value: 'Cosine Similarity / TF-IDF' },
-        { label: 'Database', value: 'MySQL (Relational)' },
-        { label: 'Auth Method', value: 'JWT Stateless Session' },
-        { label: 'Export Engine', value: 'ReportLab / PDF Compiler' }
+        { label: 'Core AI Model', value: 'LLaMA 3 70B (Groq)' },
+        { label: 'OCR Engine', value: 'Tesseract OCR' },
+        { label: 'Backend ORM', value: 'SQLAlchemy' },
+        { label: 'Document Limit', value: '7+ Types Supported' },
+        { label: 'Security Standard', value: 'Stateless JWT Auth' },
+        { label: 'Report Builder', value: 'Automated PDF Export' }
       ],
-      technologies: ['React', 'Flask', 'MySQL', 'Groq Llama 3', 'Tailwind CSS'],
+      technologies: ['React', 'Flask', 'SQLAlchemy', 'Tesseract OCR', 'Groq LLaMA 3', 'JWT'],
       features: [
-        'ATS Resume Keyword Optimization Scanners',
-        'Dynamic Resume Score Analysis & Insights',
-        'Instant PDF Generation and Exporting',
-        'User Analytics & Activity Dashboards',
-        'Secure Authentication via JWT & MySQL'
+        'Automated Fraud Detection for 7+ Document Types',
+        'Tesseract OCR Text Extraction & Parsing',
+        'Groq LLaMA 3 70B Document Compliance Auditing',
+        'Dual Confidence & Fraud Risk Scoring Engine',
+        'JWT-based Role Access Control (User, Officer, Admin)',
+        'Automated PDF Verification Report Exporting'
       ],
       image: '/resume_ai_mockup.png',
       categories: ['AI/ML', 'Full Stack'],

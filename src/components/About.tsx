@@ -122,19 +122,51 @@ export const About: React.FC = () => {
                   </div>
 
                   <div className="relative border-l border-white/10 pl-5 ml-2.5 space-y-6">
-                    {/* Education Item */}
+                    {/* Education Item - BCA */}
                     <div className="relative">
                       {/* Timeline dot */}
                       <span className="absolute -left-[27px] top-1.5 h-3.5 w-3.5 rounded-full bg-cyan-500 border-2 border-[#0e1322] shadow-[0_0_8px_rgba(6,182,212,0.5)]"></span>
 
-                      <span className="text-xs font-mono font-bold text-cyan-400">2023 - 2026</span>
-                      <h4 className="text-lg font-bold text-white mt-1">Bachelor of Computer Applications</h4>
+                      <span className="text-xs font-mono font-bold text-cyan-400">2023 - 2026 (Expected)</span>
+                      <h4 className="text-base sm:text-lg font-bold text-white mt-1">Bachelor of Computer Applications</h4>
                       <p className="text-sm text-gray-400">Basaveshwar Science College</p>
                       <p className="text-xs text-gray-500">Bagalkot, Karnataka</p>
 
                       <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold mt-3">
                         <Award className="w-3.5 h-3.5" />
                         <span>CGPA: 8.15 / 10</span>
+                      </div>
+                    </div>
+
+                    {/* Education Item - Class XII */}
+                    <div className="relative">
+                      {/* Timeline dot */}
+                      <span className="absolute -left-[27px] top-1.5 h-3.5 w-3.5 rounded-full bg-cyan-500/50 border-2 border-[#0e1322]"></span>
+
+                      <span className="text-xs font-mono font-bold text-cyan-400">March 2023</span>
+                      <h4 className="text-base sm:text-lg font-bold text-white mt-1">Higher Secondary Education (Class XII)</h4>
+                      <p className="text-sm text-gray-400">Shivshambho Arts and Science College</p>
+                      <p className="text-xs text-gray-500">Kanher, Maharashtra</p>
+
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/5 border border-cyan-500/10 text-cyan-400/80 text-xs font-bold mt-3">
+                        <Award className="w-3.5 h-3.5" />
+                        <span>Percentage: 60%</span>
+                      </div>
+                    </div>
+
+                    {/* Education Item - Class X */}
+                    <div className="relative">
+                      {/* Timeline dot */}
+                      <span className="absolute -left-[27px] top-1.5 h-3.5 w-3.5 rounded-full bg-cyan-500/30 border-2 border-[#0e1322]"></span>
+
+                      <span className="text-xs font-mono font-bold text-cyan-400">March 2021</span>
+                      <h4 className="text-base sm:text-lg font-bold text-white mt-1">Secondary Education (Class X)</h4>
+                      <p className="text-sm text-gray-400">Sadashivrao Mane Vidyalaya</p>
+                      <p className="text-xs text-gray-500">Akluj, Maharashtra</p>
+
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/5 border border-cyan-500/10 text-cyan-400/80 text-xs font-bold mt-3">
+                        <Award className="w-3.5 h-3.5" />
+                        <span>Percentage: 63%</span>
                       </div>
                     </div>
                   </div>

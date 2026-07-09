@@ -14,11 +14,11 @@ interface SkillCategory {
 export const Skills: React.FC = () => {
   const categories: SkillCategory[] = [
     {
-      title: 'Programming',
+      title: 'Programming & Data Handling',
       icon: <Code2 className="w-5 h-5" />,
       color: 'rgba(59, 130, 246, 0.12)', // Blue
       textColor: 'text-blue-400 border-blue-500/20 bg-blue-500/5',
-      skills: ['Python', 'JavaScript', 'SQL'],
+      skills: ['Python', 'SQL', 'JavaScript',],
     },
     {
       title: 'AI & Machine Learning',
@@ -28,8 +28,6 @@ export const Skills: React.FC = () => {
       skills: [
         'Groq API',
         'Prompt Engineering',
-        'FAISS',
-        'RAG (Retrieval-Augmented Generation)',
         'LLM Applications',
         'AI Agents',
       ],
@@ -39,7 +37,7 @@ export const Skills: React.FC = () => {
       icon: <Server className="w-5 h-5" />,
       color: 'rgba(6, 182, 212, 0.12)', // Cyan
       textColor: 'text-cyan-400 border-cyan-500/20 bg-cyan-500/5',
-      skills: ['FastAPI', 'Flask', 'REST APIs'],
+      skills: ['FastAPI', 'Flask',],
     },
     {
       title: 'Frontend',
