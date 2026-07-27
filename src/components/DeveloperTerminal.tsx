@@ -21,9 +21,14 @@ export const DeveloperTerminal: React.FC = () => {
 
   const terminalEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const isFirstRender = useRef(true);
 
-  // Auto-scroll to bottom of terminal screen
+  // Auto-scroll to bottom of terminal screen (except on initial mount)
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [logs]);
 
@@ -91,18 +96,19 @@ export const DeveloperTerminal: React.FC = () => {
 
       case 'about':
         newLogs.push(
-          { text: 'Aman Daftarband - Computer Applications (BCA) Student & AI Developer.', type: 'output' },
-          { text: 'Passionate about Data Analytics, Software Engineering, and building agentic generative AI pipelines.', type: 'output' },
-          { text: 'Highly motivated to solve workflow automation problems and customize state-of-the-art LLMs.', type: 'output' }
+          { text: 'Aman Daftarband - AI Engineering Learner & MCA Aspirant.', type: 'output' },
+          { text: 'BCA graduate with hands-on experience developing AI-powered applications.', type: 'output' },
+          { text: 'Passionate about backend development, REST API design, vector search, RAG, and scalable AI solutions.', type: 'output' }
         );
         break;
 
       case 'skills':
         newLogs.push(
-          { text: 'Languages:   Python, TypeScript, SQL, JavaScript, HTML, CSS', type: 'output' },
-          { text: 'Backend:     FastAPI, Flask, MySQL, PostgreSQL, JWT Authentication', type: 'output' },
-          { text: 'Frontend:    React 19, Vite, Tailwind CSS, Framer Motion', type: 'output' },
-          { text: 'AI / Data:   Gemini API, Groq Cloud (Llama 3), FAISS, Vector Search, Pandas, Numpy', type: 'output' }
+          { text: 'Programming: Python, SQL, JavaScript, HTML5, CSS3', type: 'output' },
+          { text: 'Backend:     FastAPI, Flask, REST APIs, API Integration', type: 'output' },
+          { text: 'AI & ML:     Machine Learning, Generative AI, LLMs, LangChain, Prompt Engineering, FAISS, RAG', type: 'output' },
+          { text: 'Database:    MySQL', type: 'output' },
+          { text: 'Tools:       Git, GitHub, VS Code', type: 'output' }
         );
         break;
 
@@ -110,17 +116,19 @@ export const DeveloperTerminal: React.FC = () => {
         newLogs.push(
           { text: 'Featured Projects:', type: 'success' },
           { text: '1. J.A.R.V.I.S Desktop Voice Assistant', type: 'output' },
-          { text: '   - Python voice automation utilizing Groq AI, FAISS vector embeddings, and Eel.', type: 'output' },
-          { text: '2. Resume AI (ATS Resume Optimizer Scanners)', type: 'output' },
-          { text: '   - Flask/React system evaluating Cosine Similarity matching against job profiles.', type: 'output' }
+          { text: '   - Python voice assistant using Groq AI, FAISS vector database search, and Eel.', type: 'output' },
+          { text: '2. AI Property Document Verification System', type: 'output' },
+          { text: '   - Property document fraud detection platform utilizing OCR and LLM technologies.', type: 'output' }
         );
         break;
 
       case 'experience':
         newLogs.push(
-          { text: 'Arlig Technologies (Python & AI Developer Intern)', type: 'success' },
-          { text: '  - Developed FastAPI schemas and integrated Large Language Model agents.', type: 'output' },
-          { text: '  - Increased internal developer script automation efficiency by 30%.', type: 'output' }
+          { text: 'Arlig Technologies (Python & AI Intern, Jan 2026 - Feb 2026)', type: 'success' },
+          { text: '  - Developed Python-based AI applications to automate workflows.', type: 'output' },
+          { text: '  - Designed and tested backend modules and REST API integrations.', type: 'output' },
+          { text: '  - Applied SQL, debugging, testing, and software engineering best practices.', type: 'output' },
+          { text: '  - Collaborated on AI development tasks while consistently meeting project timelines.', type: 'output' }
         );
         break;
 

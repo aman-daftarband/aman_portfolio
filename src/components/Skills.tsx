@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import GlowingCard from './UI/GlowingCard';
-import { Code2, Server, Database, BrainCircuit, Layout, Wrench } from 'lucide-react';
+import { Code2, Server, Database, BrainCircuit, Wrench } from 'lucide-react';
 
 interface SkillCategory {
   title: string;
@@ -14,40 +14,28 @@ interface SkillCategory {
 export const Skills: React.FC = () => {
   const categories: SkillCategory[] = [
     {
-      title: 'Programming & Data Handling',
+      title: 'Programming',
       icon: <Code2 className="w-5 h-5" />,
       color: 'rgba(59, 130, 246, 0.12)', // Blue
       textColor: 'text-blue-400 border-blue-500/20 bg-blue-500/5',
-      skills: ['Python', 'SQL', 'JavaScript',],
-    },
-    {
-      title: 'AI & Machine Learning',
-      icon: <BrainCircuit className="w-5 h-5" />,
-      color: 'rgba(139, 92, 246, 0.15)', // Purple
-      textColor: 'text-purple-400 border-purple-500/20 bg-purple-500/5',
-      skills: [
-        'Groq API',
-        'Prompt Engineering',
-        'LLM Applications',
-        'AI Agents',
-      ],
+      skills: ['Python', 'SQL', 'JavaScript', 'HTML5', 'CSS3'],
     },
     {
       title: 'Backend',
       icon: <Server className="w-5 h-5" />,
       color: 'rgba(6, 182, 212, 0.12)', // Cyan
       textColor: 'text-cyan-400 border-cyan-500/20 bg-cyan-500/5',
-      skills: ['FastAPI', 'Flask',],
+      skills: ['FastAPI', 'Flask', 'REST APIs', 'API Integration'],
     },
     {
-      title: 'Frontend',
-      icon: <Layout className="w-5 h-5" />,
-      color: 'rgba(236, 72, 153, 0.12)', // Pink
-      textColor: 'text-pink-400 border-pink-500/20 bg-pink-500/5',
-      skills: ['React', 'HTML', 'CSS', 'Tailwind CSS'],
+      title: 'AI & ML',
+      icon: <BrainCircuit className="w-5 h-5" />,
+      color: 'rgba(139, 92, 246, 0.15)', // Purple
+      textColor: 'text-purple-400 border-purple-500/20 bg-purple-500/5',
+      skills: ['Machine Learning', 'Generative AI', 'LLMs', 'LangChain', 'Prompt Engineering', 'FAISS', 'RAG'],
     },
     {
-      title: 'Databases',
+      title: 'Database',
       icon: <Database className="w-5 h-5" />,
       color: 'rgba(16, 185, 129, 0.12)', // Emerald
       textColor: 'text-emerald-400 border-emerald-500/20 bg-emerald-500/5',
@@ -58,7 +46,7 @@ export const Skills: React.FC = () => {
       icon: <Wrench className="w-5 h-5" />,
       color: 'rgba(245, 158, 11, 0.12)', // Amber
       textColor: 'text-amber-400 border-amber-500/20 bg-amber-500/5',
-      skills: ['Git', 'GitHub', 'VS Code', 'Postman'],
+      skills: ['Git', 'GitHub', 'VS Code'],
     },
   ];
 

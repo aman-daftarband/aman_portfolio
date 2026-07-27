@@ -54,10 +54,10 @@ export const About: React.FC = () => {
                   </div>
 
                   <p className="text-gray-300 leading-relaxed text-base sm:text-lg mb-6">
-                    Computer Applications graduate skilled in Python, SQL, FastAPI, Flask, AI Integrations, Prompt Engineering, and Data Analytics.
+                    BCA graduate with hands-on experience developing AI-powered applications using Python, FastAPI, SQL, Flask, and Large Language Models (LLMs).
                   </p>
-                  <p className="text-gray-450 leading-relaxed text-sm sm:text-base">
-                    I specialize in building production-ready web platforms powered by artificial intelligence. From designing responsive, high-performance user interfaces in React to setting up robust backend APIs and RAG workflows, I enjoy bringing complex ideas to life through high-quality code.
+                  <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
+                    Skilled in backend development, REST API design, AI automation, vector search, and Retrieval-Augmented Generation (RAG). Built AI applications integrating LangChain, FAISS, and modern LLM APIs. Passionate about developing scalable AI solutions and continuously improving software engineering skills.
                   </p>
                 </div>
 
@@ -127,9 +127,9 @@ export const About: React.FC = () => {
                       {/* Timeline dot */}
                       <span className="absolute -left-[27px] top-1.5 h-3.5 w-3.5 rounded-full bg-cyan-500 border-2 border-[#0e1322] shadow-[0_0_8px_rgba(6,182,212,0.5)]"></span>
 
-                      <span className="text-xs font-mono font-bold text-cyan-400">2023 - 2026 (Expected)</span>
-                      <h4 className="text-base sm:text-lg font-bold text-white mt-1">Bachelor of Computer Applications</h4>
-                      <p className="text-sm text-gray-400">Basaveshwar Science College</p>
+                      <span className="text-xs font-mono font-bold text-cyan-400">Graduated: April 2026</span>
+                      <h4 className="text-base sm:text-lg font-bold text-white mt-1">Bachelor of Computer Applications (BCA)</h4>
+                      <p className="text-sm text-gray-400">B.V.V. Sangha's Basaveshwar Science College</p>
                       <p className="text-xs text-gray-500">Bagalkot, Karnataka</p>
 
                       <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold mt-3">
@@ -137,36 +137,28 @@ export const About: React.FC = () => {
                         <span>CGPA: 8.15 / 10</span>
                       </div>
                     </div>
+                  </div>
 
-                    {/* Education Item - Class XII */}
-                    <div className="relative">
-                      {/* Timeline dot */}
-                      <span className="absolute -left-[27px] top-1.5 h-3.5 w-3.5 rounded-full bg-cyan-500/50 border-2 border-[#0e1322]"></span>
-
-                      <span className="text-xs font-mono font-bold text-cyan-400">March 2023</span>
-                      <h4 className="text-base sm:text-lg font-bold text-white mt-1">Higher Secondary Education (Class XII)</h4>
-                      <p className="text-sm text-gray-400">Shivshambho Arts and Science College</p>
-                      <p className="text-xs text-gray-500">Kanher, Maharashtra</p>
-
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/5 border border-cyan-500/10 text-cyan-400/80 text-xs font-bold mt-3">
-                        <Award className="w-3.5 h-3.5" />
-                        <span>Percentage: 60%</span>
+                  {/* Languages & Strengths */}
+                  <div className="mt-8 pt-6 border-t border-white/5 space-y-5">
+                    <div>
+                      <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">Languages</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {['English', 'Hindi', 'Marathi'].map((lang) => (
+                          <span key={lang} className="text-xs px-3 py-1.5 rounded-xl bg-white/5 border border-white/5 text-gray-300 font-medium">
+                            {lang}
+                          </span>
+                        ))}
                       </div>
                     </div>
-
-                    {/* Education Item - Class X */}
-                    <div className="relative">
-                      {/* Timeline dot */}
-                      <span className="absolute -left-[27px] top-1.5 h-3.5 w-3.5 rounded-full bg-cyan-500/30 border-2 border-[#0e1322]"></span>
-
-                      <span className="text-xs font-mono font-bold text-cyan-400">March 2021</span>
-                      <h4 className="text-base sm:text-lg font-bold text-white mt-1">Secondary Education (Class X)</h4>
-                      <p className="text-sm text-gray-400">Sadashivrao Mane Vidyalaya</p>
-                      <p className="text-xs text-gray-500">Akluj, Maharashtra</p>
-
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/5 border border-cyan-500/10 text-cyan-400/80 text-xs font-bold mt-3">
-                        <Award className="w-3.5 h-3.5" />
-                        <span>Percentage: 63%</span>
+                    <div>
+                      <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">Strengths</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {['Problem Solving', 'Quick Learner', 'Adaptability', 'Self-motivated'].map((strength) => (
+                          <span key={strength} className="text-xs px-3 py-1.5 rounded-xl bg-cyan-500/5 border border-cyan-500/15 text-cyan-400/90 font-medium">
+                            {strength}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -175,7 +167,7 @@ export const About: React.FC = () => {
                 <div className="mt-8 pt-6 border-t border-white/5 space-y-3">
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-500">Location:</span>
-                    <span className="text-gray-300 font-medium text-right">Akluj, Maharashtra, India</span>
+                    <span className="text-gray-300 font-medium text-right">Maharashtra, India</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-500">Status:</span>

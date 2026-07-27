@@ -7,19 +7,19 @@ export const Experience: React.FC = () => {
   const achievements = [
     {
       icon: <Cpu className="w-5 h-5 text-blue-400" />,
-      text: 'Developed 15+ AI-based Python projects focusing on automation and data analysis.',
+      text: 'Developed Python-based AI applications to automate workflows and improve software functionality.',
     },
     {
       icon: <Zap className="w-5 h-5 text-purple-400" />,
-      text: 'Built machine learning workflows integrating external API services and local vector stores.',
+      text: 'Designed and tested backend modules while implementing REST API integration.',
     },
     {
       icon: <Search className="w-5 h-5 text-cyan-400" />,
-      text: 'Improved debugging pipelines and analytical problem-solving to resolve complex system edge cases.',
+      text: 'Applied SQL, debugging, testing, and software engineering best practices to internship assignments.',
     },
     {
       icon: <ShieldCheck className="w-5 h-5 text-emerald-400" />,
-      text: 'Increased project efficiency by 30% through automated script refactoring and API optimizations.',
+      text: 'Collaborated on AI development tasks while consistently delivering assignments within project timelines.',
     },
   ];
 

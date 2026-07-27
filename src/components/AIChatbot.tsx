@@ -50,16 +50,16 @@ export const AIChatbot: React.FC = () => {
       return "Aman has built two core AI projects: 1. J.A.R.V.I.S (a desktop voice assistant with vector search memory) and 2. AI Property Document Verification System (automating property fraud detection). Feel free to click on them to explore!";
     }
     if (msg.includes('skill') || msg.includes('tech') || msg.includes('expert') || msg.includes('language')) {
-      return "Aman's skills include Python, FastAPI, Flask, SQL, React, TypeScript, and Data Analytics, along with deep expertise in Prompt Engineering and building RAG workflows.";
+      return "Aman's core competencies include Programming (Python, SQL, JavaScript, HTML5, CSS3), Backend (FastAPI, Flask, REST APIs, API Integration), AI & ML (Machine Learning, Generative AI, LLMs, LangChain, Prompt Engineering, FAISS, RAG), Database (MySQL), and Tools (Git, GitHub, VS Code).";
     }
     if (msg.includes('contact') || msg.includes('hire') || msg.includes('email') || msg.includes('phone') || msg.includes('reach')) {
       return "You can reach Aman via email at amandaftarband@gmail.com, call him at +91 8788177013, or message him using the form in the Contact section.";
     }
     if (msg.includes('education') || msg.includes('college') || msg.includes('degree') || msg.includes('school') || msg.includes('percentage') || msg.includes('cgpa')) {
-      return "Aman is pursuing a BCA degree from Basaveshwar Science College, Bagalkot (2023 - 2026) with 8.15 CGPA. He completed Class XII in 2023 (60%) and Class X in 2021 (63%).";
+      return "Aman graduated with a Bachelor of Computer Applications (BCA) degree from B.V.V. Sangha's Basaveshwar Science College, Bagalkot in April 2026, with a CGPA of 8.15/10.";
     }
     if (msg.includes('experience') || msg.includes('work') || msg.includes('intern') || msg.includes('arlig')) {
-      return "Aman interned as a Python & AI Intern at Arlig Technologies, where he designed modular FastAPI systems and integrated LLM workflows to improve developer automation productivity by 30%.";
+      return "Aman interned as a Python & AI Intern at Arlig Technologies (Jan 2026 - Feb 2026), where he developed Python-based AI applications to automate workflows and designed backend modules with REST API integrations.";
     }
     if (msg.includes('resume') || msg.includes('cv')) {
       return "You can download Aman's resume in PDF format directly from the button in the Hero section at the top of the page!";
@@ -78,15 +78,15 @@ Answer questions on behalf of Aman in a professional, helpful, and concise devel
 
 Aman's Details:
 - Name: Aman Daftarband
-- Titles: AI Developer | Full Stack Developer | Prompt Engineer
-- Location: Akluj, Maharashtra, India
+- Titles: AI Engineering Learner | MCA Aspirant
+- Location: Maharashtra, India
 - Email: amandaftarband@gmail.com
 - Phone: +91 8788177013
 - LinkedIn: https://www.linkedin.com/in/aman-daftarband
 - GitHub: https://github.com/amanshaikh405
-- Education: Bachelor of Computer Applications (BCA) at Basaveshwar Science College (2023-2026, CGPA: 8.15 / 10), Class XII (Shivshambho Arts and Science College, 2023, 60%), Class X (Sadashivrao Mane Vidyalaya, 2021, 63%).
-- Experience: Python & AI Developer Intern at Arlig Technologies. Designed FastAPI systems, integrated AI models, improved efficiency by 30%.
-- Certifications: Oracle Cloud Infrastructure 2025 AI Foundations Associate, NVIDIA Deep Learning Institute (Building LLM Applications with Prompt Engineering).
+- Education: Bachelor of Computer Applications (BCA) at B.V.V. Sangha's Basaveshwar Science College, Bagalkot (Graduated April 2026, CGPA: 8.15 / 10).
+- Experience: Python & AI Intern at Arlig Technologies (Jan 2026 - Feb 2026). Developed Python-based AI applications to automate workflows and designed/tested backend modules.
+- Certifications: Oracle Cloud Infrastructure AI Foundation Associate, NVIDIA Deep Learning Institute (Building LLM Applications with Prompt Engineering).
 - Projects:
   1. J.A.R.V.I.S Smart Desktop Voice Assistant: Python, FastAPI, Groq AI, FAISS vector memory retrieval, Tavily API.
   2. AI Property Document Verification System: React, Flask, SQLAlchemy, Tesseract OCR, Groq LLaMA 3 70B, stateless JWT role access controls.

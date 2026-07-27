@@ -46,12 +46,12 @@ export const Hero: React.FC = () => {
 
             {/* Subtitle */}
             <h2 className="text-2xl sm:text-3xl font-semibold text-white tracking-wide">
-              AI & Python Developer
+              AI Engineering Learner | MCA Aspirant
             </h2>
 
             {/* Description */}
             <p className="text-base sm:text-lg text-gray-400 leading-relaxed font-light">
-              Specialized in building full-stack AI applications, automation workflows.
+              BCA graduate with hands-on experience developing AI-powered applications, specializing in backend development, REST API design, vector search, and RAG.
             </p>
 
             {/* Rounded Buttons */}
